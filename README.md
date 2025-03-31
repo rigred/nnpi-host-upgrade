@@ -1,11 +1,7 @@
-# DISCONTINUATION OF PROJECT #
-This project will no longer be maintained by Intel.
-Intel has ceased development and contributions including, but not limited to, maintenance, bug fixes, new releases, or updates, to this project.
-Intel no longer accepts patches to this project.
 # Intel(C) Neural Network Process for Inference (NNP-I) Software
 
 # About
-This repository contains the host low-level user-mode library and tests for Intel NNP-I.
+This repository contains the host low-level user-mode library and tests for Intel NNP-I (Spring Hill)
 
 ## Runtime dependencies
 
@@ -28,8 +24,13 @@ The dummy_inference test program will be installed in /usr/local/bin/dummy_infer
 allocating resources, schedule inference commands, DMA input/outputs to/from the device but without running
 any real inference. It uses special "ULT" feature of the device which allows to create dummy inference network
 that will only copy the network inputs to outputs when the network is executed.
-<br/>
+
 The test can schedule one or more such infer commands with configurable number and size of inputs and outputs
 and validate the resulting outputs.
-<br/>
+
 Run `dummy_inference -h` for usage.
+
+# DISCONTINUATION OF PROJECT #
+This project will no longer be maintained by Intel.
+Intel has ceased development and contributions including, but not limited to, maintenance, bug fixes, new releases, or updates, to this project.
+Intel no longer accepts patches to this project.
