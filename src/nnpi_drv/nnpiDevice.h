@@ -8,6 +8,8 @@
 #include <memory>
 #include <vector>
 #include <stdint.h>
+#include <cstdio>     // C++ header that includes sscanf, snprintf, etc.
+#include <cctype>     // C++ header for isdigit
 #include <unordered_set>
 #include <mutex>
 #include <map>

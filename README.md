@@ -9,7 +9,9 @@ This repository contains the host low-level user-mode library and tests for Inte
 
 ## Runtime dependencies
 
-1. libc++
+### Ubuntu 24.04.2
+
+1. libc++-dev build-essential libtool autoconf
 
 ## Building
 
