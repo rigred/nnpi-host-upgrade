@@ -1,36 +1,71 @@
-# Intel(C) Neural Network Process for Inference (NNP-I) Software
+# NNPI‑Host Project (Community Fork)
 
-# About
-This repository contains the host low-level user-mode library and tests for Intel NNP-I (Spring Hill)
+**Overview**  
+This repository provides the host-side user-mode library and test applications for Intel® Nervana™ Neural Network Processor for Inference (NNP‑I, Spring Hill). The library exposes a low-level API for managing NNPI device resources, such as host memory allocation for DMA and scheduling inference commands. It also includes a test application, **dummy_inference**, that simulates an entire inference workflow (resource allocation, command scheduling, and DMA transfers) without performing real neural network computations.
 
-## Runtime dependencies
+**Features**
+- Low-level API for interfacing with the NNPI device.
+- Management of host memory resources for DMA.
+- Command channel interface for scheduling and processing inference operations.
+- A test harness (**dummy_inference**) to validate the full inference flow.
+- Open source and community maintained, Intel discontinued official support.
 
-### Ubuntu 24.04.2
+**Runtime Dependencies (Ubuntu 24.04.2)**
+- libc++-dev
+- build-essential
+- libtool
+- autoconf
 
-1. libc++-dev build-essential libtool autoconf
+**Building**
 
-## Building
+1. **Prepare the Build System**  
+   Run autoreconf to generate the build system:
+   ```bash
+   autoreconf -i
+   ```
 
-1. autoreconf -i
-2. ./configure
-3. make
-4. sudo make install
+2. **Configure**  
+   Configure the project:
+   ```bash
+   ./configure
+   ```
 
-The user-mode library will be installed in /usr/local/lib/libnnpi_drv.so.0.
-The dummy_inference test program will be installed in /usr/local/bin/dummy_inference.
+3. **Compile**  
+   Build the project:
+   ```bash
+   make
+   ```
 
-## Tests
-**dummy_inference** - A test program that runs the entire flow of a real inference application, including
-allocating resources, schedule inference commands, DMA input/outputs to/from the device but without running
-any real inference. It uses special "ULT" feature of the device which allows to create dummy inference network
-that will only copy the network inputs to outputs when the network is executed.
+4. **Install (Optional)**  
+   Install the library and test application (requires sudo):
+   ```bash
+   sudo make install
+   ```
+   The user-mode library will be installed as `/usr/local/lib/libnnpi_drv.so.0` and the dummy_inference test program as `/usr/local/bin/dummy_inference`.
 
-The test can schedule one or more such infer commands with configurable number and size of inputs and outputs
-and validate the resulting outputs.
+**Testing**
 
-Run `dummy_inference -h` for usage.
+- **dummy_inference**  
+  This test program simulates a full inference application workflow. It allocates resources, schedules inference commands, and performs DMA transfers between the host and the NNPI device (using the device’s ULT feature to simulate inference without actual neural network computation).  
+  Run:
+  ```bash
+  dummy_inference -h
+  ```
+  to view usage instructions and options.
 
-# DISCONTINUATION OF PROJECT #
-This project will no longer be maintained by Intel.
-Intel has ceased development and contributions including, but not limited to, maintenance, bug fixes, new releases, or updates, to this project.
-Intel no longer accepts patches to this project.
+**Important Build Note**  
+If you experience build errors related to missing external files (for example, errors about a missing `.br2-external.mk` file), ensure that you update all Git submodules before building:
+```bash
+git submodule update --init --recursive
+```
+
+**Community-Driven Development**  
+Intel has discontinued development and maintenance of the original NNPI‑Host project. This repository is now maintained by the community. Contributions, bug fixes, and feature enhancements are welcome, please feel free to fork and submit pull requests.
+
+**License**  
+This project is released under the GNU General Public License (GPL). See [LICENSE.txt](LICENSE.txt) for details.
+
+**Acknowledgements**  
+- **Intel® Nervana™ NNPI‑I:** The original hardware and host software were developed by Intel.  
+- **Linux Kernel Mailing List:** Initial design and driver details were discussed on LKML.  
+- **The Community:** Thanks to all contributors and users who keep this project alive.
