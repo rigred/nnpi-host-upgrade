@@ -53,12 +53,6 @@ This repository provides the host-side user-mode library and test applications f
   ```
   to view usage instructions and options.
 
-**Important Build Note**  
-If you experience build errors related to missing external files (for example, errors about a missing `.br2-external.mk` file), ensure that you update all Git submodules before building:
-```bash
-git submodule update --init --recursive
-```
-
 **Community-Driven Development**  
 Intel has discontinued development and maintenance of the original NNPI‑Host project. This repository is now maintained by the community. Contributions, bug fixes, and feature enhancements are welcome, please feel free to fork and submit pull requests.
 
